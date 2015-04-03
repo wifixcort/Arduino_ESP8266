@@ -27,7 +27,7 @@ better timing, at least for me XD
 
 */
 //You can modify this value and others delays to, if you have problems reading messages
-#define TIMING 12
+#define TIMING 10
 
 SoftwareSerial debug(2,3); //(RX, TX)->ESP(TX, RX)
 void setup(){
@@ -41,17 +41,17 @@ void setup(){
 void loop(){
   if(Serial.available()) // check if the esp is sending a message 
   {
-    
+    String message = "";
     delay(TIMING);//Wait this time to read message clearly
     while(Serial.available()){
       // The esp has data so display its output to the serial window 
       char c = Serial.read(); // read the next character.
-      debug.write(c);
-      delay(TIMING);//Wait this time to read message clearly
+      message +=c;
+      debug.read();
+      //delay(TIMING);//Wait this time to read message clearly
     }
-    debug.println("");
+    debug.println(message);
   }
-  
   if(debug.available()){
     delay(TIMING);//Wait this time to read message clearly
     
@@ -59,8 +59,9 @@ void loop(){
     while(debug.available()){// read the command character by character
     // read one character
     command+=(char)debug.read();
-    delay(TIMING);//Wait this time to read message clearly
+    //delay(TIMING);//Wait this time to read message clearly
     }//end while
+
     Serial.println(command); // send the read character to the esp8266
   }//end if
 }//end loop
