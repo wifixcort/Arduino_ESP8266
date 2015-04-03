@@ -26,8 +26,8 @@ This is and implementation of ther code, that include FTDI conecction and
 better timing, at least for me XD
 
 */
-/You can modify this value and others delays to, if you have problems reading messages
-#define TIMING 10
+//You can modify this value and others delays to, if you have problems reading messages
+#define TIMING 12
 
 SoftwareSerial debug(2,3); //(RX, TX)->ESP(TX, RX)
 void setup(){
@@ -41,7 +41,7 @@ void setup(){
 void loop(){
   if(Serial.available()) // check if the esp is sending a message 
   {
-    /
+    
     delay(TIMING);//Wait this time to read message clearly
     while(Serial.available()){
       // The esp has data so display its output to the serial window 
