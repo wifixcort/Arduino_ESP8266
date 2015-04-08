@@ -37,8 +37,8 @@ SoftwareSerial debug(2, 3);//ARDUINO(RX, TX)->ESP8266(TX, RX)
 #define LED_GREEN 12
 #define LED_RED 11
 
-#define SSID "Wifixcort"
-#define PASSWORD "k13p74jy8q"
+#define SSID "YourApName"
+#define PASSWORD "YourApPassword"
 
 
 boolean _find(String text, String fnd1 = "OK", String fnd2 = "no change");
